@@ -1,0 +1,70 @@
+---
+const faqs = [
+  {
+    question: "What are the Akashic Records?",
+    answer: "The Akashic Records are a compendium of all human events, thoughts, words, emotions, and intent ever to have occurred in the past, present, or future. They are believed to be encoded in a non-physical plane of existence known as the Akashic Plane. Think of them as the Universe's supercomputer system—a cosmic memory bank that contains information about your soul's journey."
+  },
+  {
+    question: "How do readings work?",
+    answer: "Readings are conducted remotely via Zoom or in person if you're local. I begin with a brief meditation to create sacred space and access your Records. Then I'll address your specific questions or concerns, channeling information and guidance from your Records. Sessions typically include a mix of past life information, present insights, and future potentials."
+  },
+  {
+    question: "What kind of questions can I ask?",
+    answer: "You can ask about relationships, career paths, life purpose, health patterns, recurring challenges, spiritual gifts, past lives, and more. The most powerful questions are open-ended and focus on understanding and growth rather than predictions. I'll help you formulate effective questions during our session."
+  },
+  {
+    question: "Do I need to prepare for a reading?",
+    answer: "It's helpful to spend some time reflecting on what you'd like to gain from the reading and preparing 3-5 key questions. Find a quiet, comfortable space for our session where you won't be disturbed. Come with an open mind and heart—the Records respond best to genuine curiosity and readiness for growth."
+  },
+  {
+    question: "How often should I have a reading?",
+    answer: "This varies by individual. Some clients benefit from monthly readings during major life transitions, while others find quarterly or bi-annual readings sufficient for guidance and check-ins. I recommend allowing at least 3-4 weeks between readings to integrate the information received before seeking more."
+  }
+];
+---
+
+<section class="py-16 md:py-24 relative" id="faq">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16" data-aos="fade-up">
+      <h2 class="text-3xl sm:text-4xl font-serif font-semibold mb-6 bg-gradient-to-r from-white via-accent-200 to-white inline-block text-transparent bg-clip-text">
+        Frequently Asked Questions
+      </h2>
+      <div class="divider mx-auto w-24"></div>
+    </div>
+    
+    <div class="space-y-6">
+      {faqs.map((faq, index) => (
+        <div class="glass-card rounded-xl p-6 transition-all duration-300" data-aos="fade-up" data-aos-delay={index * 100}>
+          <div 
+            class="flex justify-between items-start cursor-pointer"
+            id={`faq-toggle-${index}`}
+          >
+            <h3 class="text-white font-medium text-lg pr-8">{faq.question}</h3>
+            <svg id={`faq-icon-${index}`} xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-accent-400 transform transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </div>
+          <div id={`faq-answer-${index}`} class="text-gray-300 mt-2 hidden">
+            <p>{faq.answer}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const faqs = document.querySelectorAll('[id^="faq-toggle-"]');
+    
+    faqs.forEach((faq, index) => {
+      faq.addEventListener('click', () => {
+        const answer = document.getElementById(`faq-answer-${index}`);
+        const icon = document.getElementById(`faq-icon-${index}`);
+        
+        answer.classList.toggle('hidden');
+        icon.classList.toggle('rotate-180');
+      });
+    });
+  });
+</script>

@@ -1,0 +1,305 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CTASection from '../components/CTASection.astro';
+
+const services = [
+  {
+    id: "soul-purpose",
+    title: "Soul Purpose Reading",
+    price: "$150",
+    duration: "60 minutes",
+    description: "Discover your soul's mission in this lifetime and gain clarity on your spiritual path."
+  },
+  {
+    id: "past-life",
+    title: "Past Life Exploration",
+    price: "$175",
+    duration: "75 minutes",
+    description: "Explore significant past lives that are influencing your current experiences."
+  },
+  {
+    id: "relationship",
+    title: "Relationship Reading",
+    price: "$150",
+    duration: "60 minutes",
+    description: "Understand the soul contracts and karmic ties in your relationships."
+  },
+  {
+    id: "career",
+    title: "Career & Life Path",
+    price: "$150",
+    duration: "60 minutes",
+    description: "Align with your soul's blueprint for career fulfillment and material success."
+  },
+  {
+    id: "soul-journey",
+    title: "Soul Journey Package",
+    price: "$425",
+    duration: "Three sessions",
+    description: "A comprehensive three-session journey to explore your soul's past, present, and future."
+  },
+  {
+    id: "transformation",
+    title: "Life Transformation Bundle",
+    price: "$525",
+    duration: "Four sessions over 6 months",
+    description: "A six-month journey of transformation with ongoing support and guidance."
+  }
+];
+---
+
+<Layout 
+  title="Book a Reading | Akashic Record Readings"
+  description="Schedule your Akashic Record reading session. Choose from various reading types including soul purpose, past life exploration, relationships, and career guidance."
+>
+  <div class="py-16 md:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16" data-aos="fade-up">
+        <h1 class="text-4xl sm:text-5xl font-serif font-semibold mb-6 bg-gradient-to-r from-white via-accent-200 to-white inline-block text-transparent bg-clip-text">
+          Book Your Reading
+        </h1>
+        <div class="divider mx-auto w-24"></div>
+        <p class="text-gray-300 max-w-3xl mx-auto text-lg">
+          Select a service and your preferred date and time to begin your journey into the Akashic Records.
+        </p>
+      </div>
+      
+      <div class="max-w-3xl mx-auto">
+        <div class="glass-card rounded-xl p-8" data-aos="fade-up">
+          <form id="bookingForm" class="space-y-6">
+            <div>
+              <label for="service" class="block text-sm font-medium text-gray-300 mb-1">Select a Service</label>
+              <select
+                id="service"
+                name="service"
+                class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:ring-2 focus:ring-accent-400 focus:border-transparent text-white"
+                required
+              >
+                <option value="" disabled selected>Choose a reading type</option>
+                {services.map((service) => (
+                  <option value={service.id}>{service.title} - {service.price}</option>
+                ))}
+              </select>
+            </div>
+            
+            <div id="service-description" class="hidden bg-primary-900/30 p-4 rounded-lg text-gray-300">
+              <p>Select a service to see its description</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label for="date" class="block text-sm font-medium text-gray-300 mb-1">Select a Date</label>
+                <input
+                  type="date"
+                  id="date"
+                  name="date"
+                  class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:ring-2 focus:ring-accent-400 focus:border-transparent text-white"
+                  required
+                />
+              </div>
+              
+              <div>
+                <label for="time" class="block text-sm font-medium text-gray-300 mb-1">Select a Time</label>
+                <select
+                  id="time"
+                  name="time"
+                  class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:ring-2 focus:ring-accent-400 focus:border-transparent text-white"
+                  required
+                >
+                  <option value="" disabled selected>Choose a time</option>
+                  <option value="10:00">10:00 AM</option>
+                  <option value="11:30">11:30 AM</option>
+                  <option value="13:00">1:00 PM</option>
+                  <option value="14:30">2:30 PM</option>
+                  <option value="16:00">4:00 PM</option>
+                  <option value="17:30">5:30 PM</option>
+                </select>
+              </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label for="name" class="block text-sm font-medium text-gray-300 mb-1">Your Name</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:ring-2 focus:ring-accent-400 focus:border-transparent text-white"
+                  placeholder="Enter your full name"
+                  required
+                />
+              </div>
+              
+              <div>
+                <label for="email" class="block text-sm font-medium text-gray-300 mb-1">Email Address</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:ring-2 focus:ring-accent-400 focus:border-transparent text-white"
+                  placeholder="Enter your email"
+                  required
+                />
+              </div>
+            </div>
+            
+            <div>
+              <label for="questions" class="block text-sm font-medium text-gray-300 mb-1">Questions or Areas of Focus</label>
+              <textarea
+                id="questions"
+                name="questions"
+                rows="4"
+                class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:ring-2 focus:ring-accent-400 focus:border-transparent text-white"
+                placeholder="Share any specific questions or areas you'd like to explore in your reading"
+              ></textarea>
+            </div>
+            
+            <div class="pt-4">
+              <button
+                type="submit"
+                class="gradient-button bg-gradient-to-r from-primary-600 to-secondary-500 text-white font-medium px-6 py-3 rounded-lg shadow-lg transition-all duration-300 w-full"
+              >
+                Book Now
+              </button>
+            </div>
+          </form>
+        </div>
+        
+        <div class="mt-12 glass-card rounded-xl p-8" data-aos="fade-up">
+          <h2 class="text-xl font-serif font-medium text-white mb-4">Booking Information</h2>
+          
+          <div class="space-y-4 text-gray-300">
+            <p>
+              <strong class="text-white">Payment:</strong> Payment is required at the time of booking to secure your appointment. I accept all major credit cards, PayPal, and Venmo.
+            </p>
+            
+            <p>
+              <strong class="text-white">Rescheduling:</strong> If you need to reschedule, please provide at least 24 hours notice. Appointments can be rescheduled once without penalty.
+            </p>
+            
+            <p>
+              <strong class="text-white">Cancellation Policy:</strong> Cancellations made with less than 24 hours notice are subject to a 50% cancellation fee. No-shows will be charged the full session fee.
+            </p>
+            
+            <p>
+              <strong class="text-white">Preparation:</strong> After booking, you'll receive an email with information on how to prepare for your reading, including suggestions for creating a quiet space and formulating your questions.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <CTASection />
+</Layout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const serviceSelect = document.getElementById('service');
+    const serviceDescription = document.getElementById('service-description');
+    const bookingForm = document.getElementById('bookingForm');
+    
+    const services = [
+      {
+        id: "soul-purpose",
+        title: "Soul Purpose Reading",
+        price: "$150",
+        duration: "60 minutes",
+        description: "Discover your soul's mission in this lifetime and gain clarity on your spiritual path. Uncover your unique gifts and how to use them to fulfill your highest potential."
+      },
+      {
+        id: "past-life",
+        title: "Past Life Exploration",
+        price: "$175",
+        duration: "75 minutes",
+        description: "Explore significant past lives that are influencing your current experiences. Resolve karmic patterns and heal ancestral wounds that may be blocking your progress."
+      },
+      {
+        id: "relationship",
+        title: "Relationship Reading",
+        price: "$150",
+        duration: "60 minutes",
+        description: "Understand the soul contracts and karmic ties in your relationships. Gain insights into recurring patterns and learn how to create healthier connections."
+      },
+      {
+        id: "career",
+        title: "Career & Life Path",
+        price: "$150",
+        duration: "60 minutes",
+        description: "Align with your soul's blueprint for career fulfillment. Receive guidance on decisions, timing, and opportunities that resonate with your highest good."
+      },
+      {
+        id: "soul-journey",
+        title: "Soul Journey Package",
+        price: "$425",
+        duration: "Three sessions",
+        description: "A comprehensive three-session journey to explore your soul's past, present, and future. Includes a Past Life Exploration, Soul Purpose Reading, and a follow-up integration session."
+      },
+      {
+        id: "transformation",
+        title: "Life Transformation Bundle",
+        price: "$525",
+        duration: "Four sessions over 6 months",
+        description: "A six-month journey of transformation. Includes four readings (spaced 6-8 weeks apart) plus email support between sessions for ongoing integration and guidance."
+      }
+    ];
+    
+    if (serviceSelect && serviceDescription) {
+      serviceSelect.addEventListener('change', () => {
+        const selectedService = serviceSelect.value;
+        const service = services.find(s => s.id === selectedService);
+        
+        if (service) {
+          serviceDescription.innerHTML = `
+            <div class="flex justify-between items-start mb-2">
+              <span class="text-white font-medium">${service.title}</span>
+              <span class="text-accent-300">${service.price} - ${service.duration}</span>
+            </div>
+            <p>${service.description}</p>
+          `;
+          serviceDescription.classList.remove('hidden');
+        } else {
+          serviceDescription.classList.add('hidden');
+        }
+      });
+    }
+    
+    if (bookingForm) {
+      bookingForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        // Simulate form submission
+        const submitButton = bookingForm.querySelector('button[type="submit"]');
+        const originalText = submitButton.textContent;
+        
+        submitButton.disabled = true;
+        submitButton.textContent = 'Processing...';
+        
+        // Simulated delay to show loading state
+        setTimeout(() => {
+          // Reset form
+          bookingForm.reset();
+          
+          // Show success message
+          submitButton.textContent = 'Booking Confirmed!';
+          submitButton.classList.add('bg-green-600');
+          
+          // Show confirmation message
+          const formParent = bookingForm.parentElement;
+          formParent.innerHTML = `
+            <div class="text-center py-8">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-16 h-16 text-accent-400 mx-auto mb-6">
+                <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+              </svg>
+              <h2 class="text-2xl font-serif font-semibold text-white mb-4">Booking Confirmed!</h2>
+              <p class="text-gray-300 mb-6">Thank you for scheduling your Akashic Record reading. You will receive a confirmation email shortly with all the details.</p>
+              <a href="/" class="gradient-button bg-gradient-to-r from-primary-600 to-secondary-500 text-white font-medium px-6 py-3 rounded-lg shadow-lg transition-all duration-300 inline-block">
+                Return to Home
+              </a>
+            </div>
+          `;
+        }, 2000);
+      });
+    }
+  });
+</script>

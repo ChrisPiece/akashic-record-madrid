@@ -1,0 +1,62 @@
+---
+const testimonials = [
+  {
+    content: "I had an excellent Akashic Records session with Barbara yesterday. I hadn't realised something was missing in my life - she identified that and now I have a way forward to to create a better life. Thank you so much Barbara for your insight and sensitivity.",
+    name: "Mark Thomson",
+    location: "Worldwide",
+    image: "./src/assets/testimonial_man.jpg"
+  },
+  {
+    content: "t took me a while to share this feedback because the reading Bárbara gave me was so powerful and insightful that I needed time to fully integrate the information. Without any context or topic from me, she provided messages that deeply resonated — it felt like she was speaking directly to my soul. Later on, when she asked if I had a theme, I mentioned my work in a very general way, and shared my doubt about my purpose and direction. What she shared in return was completely aligned with my life mission. I highly recommend having an Akashic Records reading with Bárbara. She could have just done the session and left it at that, but instead, she checked in with me the next day to see how I was feeling and if I had any questions. That kind of follow-up and genuine care is rare and means so much more than just the session itself. She also sent me a cleansing decree after the reading — another beautiful gesture that shows how deeply she cares. I was truly touched by this experience and recommend it to anyone looking for guidance and soul clarity.",
+    name: "Archana Law",
+    location: "Worldwide",
+    image: "./src/assets/testimonial_woman.jpg"
+  },
+  {
+    content: "Sarah's reading helped me understand the karmic patterns in my life that were holding me back. With her guidance, I've been able to release old wounds and move forward with confidence.",
+    name: "Samantha P.",
+    location: "Chicago, IL",
+    image: "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+  }
+];
+---
+
+<section class="py-16 md:py-24 relative bg-gradient-to-b from-transparent to-primary-950/50" id="testimonials">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16" data-aos="fade-up">
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-serif font-semibold mb-6 bg-gradient-to-r from-white via-accent-200 to-white inline-block text-transparent bg-clip-text">
+        Client Experiences
+      </h2>
+      <div class="divider mx-auto w-24"></div>
+      <p class="text-gray-300 max-w-3xl mx-auto text-lg">
+        Hear from those who have discovered profound insights and transformation through their Akashic Record readings.
+      </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {testimonials.map((testimonial, index) => (
+        <div class="glass-card rounded-xl p-8 relative" data-aos="fade-up" data-aos-delay={index * 100}>
+          <div class="absolute top-0 right-0 transform translate-x-2 -translate-y-2">
+            <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg" class="opacity-10">
+              <path d="M16 36H8C8 27.1634 15.1634 20 24 20V28C20.6863 28 18 30.6863 18 34V36H16ZM40 36H32C32 27.1634 39.1634 20 48 20V28C44.6863 28 42 30.6863 42 34V36H40Z" fill="currentColor"/>
+            </svg>
+          </div>
+          
+          <p class="text-gray-300 mb-8">{testimonial.content}</p>
+          
+          <div class="flex items-center">
+            <img 
+              src={testimonial.image} 
+              alt={testimonial.name} 
+              class="w-12 h-12 rounded-full object-cover mr-4"
+            />
+            <div>
+              <h3 class="text-white font-medium">{testimonial.name}</h3>
+              <p class="text-sm text-gray-400">{testimonial.location}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
