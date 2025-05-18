@@ -1,6 +1,7 @@
-import { defineConfig } from 'astro/config'
+import { defineConfig } from 'astro/config';
+import netlify from '@astrojs/netlify/functions';
 
 export default defineConfig({
-  site: 'https://akashic-record-madrid.github.io',
-  base: 'my-repo',
-})
+  output: "server",
+  adapter: netlify(),
+});
